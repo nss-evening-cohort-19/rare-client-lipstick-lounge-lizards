@@ -6,9 +6,10 @@ function UserTable({ userObj }) {
   return (
     <Table>
       <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
         <th>Username</th>
         <th>Active</th>
-        <th>Author/Admin</th>
       </thead>
       <tbody>
         <tr>
