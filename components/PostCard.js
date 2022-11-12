@@ -10,10 +10,10 @@ export default function PostCard({ postObj }) {
       <Card.Body>
         <div> {postObj.title}</div>
         <Card.Img variant="top" src={postObj.image_url} alt={postObj.title} style={{ height: '400px' }} />
-        <Link href={`/Posts/${postObj.id}`} passHref>
+        <Link href={`/posts/${postObj.id}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
-        <Link href={`/Posts/edit/${postObj.id}`} passHref>
+        <Link href={`/posts/edit/${postObj.id}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
       </Card.Body>
