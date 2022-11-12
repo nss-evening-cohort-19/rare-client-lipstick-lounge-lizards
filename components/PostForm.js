@@ -23,7 +23,7 @@ function PostForm({ updateObject }) {
     if (updateObject.id) {
       setFormInput(updateObject);
     }
-  }, [updateObject, router]);
+  }, [updateObject]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,22 +36,22 @@ function PostForm({ updateObject }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     createPost(formInput);
+    router.push('/posts/allposts');
   };
-  router.push('/posts/allposts');
 
   return (
     <Form>
       <Form.Group className="mb-3" name="formImageUrl">
         <Form.Label>Image Url</Form.Label>
-        <Form.Control type="text" onChange={handleChange} value={formInput.image_url} placeholder="Post Image Url" />
+        <Form.Control type="text" onChange={handleChange} placeholder="Post Image Url" />
       </Form.Group>
       <Form.Group className="mb-3" name="formPostTitle">
         <Form.Label>Title</Form.Label>
-        <Form.Control type="text" value={formInput.title} onChange={handleChange} placeholder="Enter Post Title" />
+        <Form.Control type="text" onChange={handleChange} placeholder="Enter Post Title" />
       </Form.Group>
       <Form.Group className="mb-3" name="formContent">
         <Form.Label>Post Content</Form.Label>
-        <Form.Control as="textarea" rows={5} value={formInput.content} onChange={handleChange} placeholder="Post Content" />
+        <Form.Control as="textarea" rows={5} onChange={handleChange} placeholder="Post Content" />
       </Form.Group>
       <Button variant="primary" type="submit" className="submitButton" onClick={handleSubmit}>
         {updateObject.id ? 'Update' : 'Submit'}
