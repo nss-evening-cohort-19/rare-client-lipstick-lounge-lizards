@@ -1,18 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
-import PropTypes, { string, number } from 'prop-types';
+import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
 
-export default function PostCard({ obj }) {
+export default function PostCard({ postObj }) {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '25rem', margin: '5%' }}>
       <Card.Body>
-        <Card.Title>{obj.title}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{obj.author}</Card.Subtitle>
-        <Card.Subtitle className="mb-2 text-muted">{obj.category.label}</Card.Subtitle>
-        <Card.Text>{obj.content}</Card.Text>
-        <Link href={`/posts/${obj.id}`} passHref>
-          Link to Card
+        <div> {postObj.title}</div>
+        <Card.Img variant="top" src={postObj.image_url} alt={postObj.title} style={{ height: '400px' }} />
+        <Link href={`/Posts/${postObj.id}`} passHref>
+          <Button variant="primary" className="m-2">VIEW</Button>
+        </Link>
+        <Link href={`/Posts/edit/${postObj.id}`} passHref>
+          <Button variant="info">EDIT</Button>
         </Link>
       </Card.Body>
     </Card>
@@ -20,14 +22,15 @@ export default function PostCard({ obj }) {
 }
 
 PostCard.propTypes = {
-  obj: PropTypes.shape({
-    id: number,
-    title: string,
-    author: string,
-    content: string,
-    category: PropTypes.shape({
-      id: number,
-      label: string,
-    }),
+  postObj: PropTypes.shape({
+    id: PropTypes.number,
+    user_id: PropTypes.number,
+    category_id: PropTypes.number,
+    category: PropTypes.number,
+    title: PropTypes.string,
+    publication_date: PropTypes.string,
+    image_url: PropTypes.string,
+    content: PropTypes.string,
+    approved: PropTypes.number,
   }).isRequired,
 };
