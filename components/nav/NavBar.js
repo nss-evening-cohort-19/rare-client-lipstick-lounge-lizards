@@ -33,7 +33,7 @@ function AppNavBar({ token, setToken }) {
                 className="button is-outlined"
                 onClick={() => {
                   setToken('');
-                  navigate('/login');
+                  navigate.push('/login');
                 }}
               >
                 Logout
