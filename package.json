@@ -1,8 +1,8 @@
 {
-  "name": "next-firebase-starter",
+  "name": "rare",
   "private": true,
   "version": "1.0.0",
-  "author": "Update Name!",
+  "author": "Rochelle Rossman, Kristen Chandler, Sariah Campopiano, Jacob Martin, Joel McAnulty",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
