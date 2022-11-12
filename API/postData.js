@@ -27,7 +27,8 @@ const createPost = (postObject) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}`, postObject)
     .then((response) => {
       const body = { pk: response.data.name };
-      axios.patch(`${dbUrl}/posts/${response.data.name}.json`, body).then(() => {
+      console.warn(response, 'create post response');
+      axios.put(`${dbUrl}/posts/${response.data.name}.json`, body).then(() => {
         getAllPosts(postObject.uid).then(resolve);
       });
     })

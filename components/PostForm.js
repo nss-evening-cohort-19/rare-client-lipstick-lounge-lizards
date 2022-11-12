@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { createPost } from '../API/postData';
+import { createPost, getAllPosts } from '../API/postData';
 
 const initialState = {
   user_id: null,
@@ -20,7 +20,11 @@ function PostForm({ updateObject }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (updateObject.id) {
+    getAllPosts();
+  }, []);
+
+  useEffect(() => {
+    if (updateObject) {
       setFormInput(updateObject);
     }
   }, [updateObject]);
@@ -35,23 +39,22 @@ function PostForm({ updateObject }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createPost(formInput);
-    router.push('/posts/allposts');
+    createPost(formInput).then(() => router.push('/posts/allposts'));
   };
 
   return (
     <Form>
       <Form.Group className="mb-3" name="formImageUrl">
         <Form.Label>Image Url</Form.Label>
-        <Form.Control type="text" onChange={handleChange} placeholder="Post Image Url" />
+        <Form.Control type="text" name="image_url" value={formInput.image_url} onChange={handleChange} placeholder="Post Image Url" />
       </Form.Group>
       <Form.Group className="mb-3" name="formPostTitle">
         <Form.Label>Title</Form.Label>
-        <Form.Control type="text" onChange={handleChange} placeholder="Enter Post Title" />
+        <Form.Control type="text" name="title" value={formInput.title} onChange={handleChange} placeholder="Enter Post Title" />
       </Form.Group>
       <Form.Group className="mb-3" name="formContent">
         <Form.Label>Post Content</Form.Label>
-        <Form.Control as="textarea" rows={5} onChange={handleChange} placeholder="Post Content" />
+        <Form.Control as="textarea" name="content" rows={5} onChange={handleChange} value={formInput.content} placeholder="Post Content" />
       </Form.Group>
       <Button variant="primary" type="submit" className="submitButton" onClick={handleSubmit}>
         {updateObject.id ? 'Update' : 'Submit'}
