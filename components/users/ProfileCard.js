@@ -10,11 +10,13 @@ function ProfileCard({ userObj }) {
         <Card.Body>
           <Card.Text>{userObj.first_name}{userObj.last_name}</Card.Text>
         </Card.Body>
+      </Card>
+      <Card style={{ width: '18rem' }}>
         <Card.Body>
-          <Card.Title>${userObj.username}</Card.Title>
-          <Card.Title>${userObj.email}</Card.Title>
-          <Card.Title>${userObj.created_on}</Card.Title>
-          <Card.Title>${userObj.active}</Card.Title>
+          <Card.Title>Username: {userObj.username}</Card.Title>
+          <Card.Title>Email: {userObj.email}</Card.Title>
+          <Card.Title>Account Created On:{userObj.created_on}</Card.Title>
+          <Card.Title>{userObj.active === 'Yes' ? 'Active Account' : 'Deactive Account'}</Card.Title>
           <Card.Link href="#">Number of posts:</Card.Link>
         </Card.Body>
       </Card>
@@ -33,11 +35,7 @@ ProfileCard.propTypes = {
     profile_image_url: PropTypes.string,
     created_on: PropTypes.string,
     active: PropTypes.bool,
-  }),
-};
-
-ProfileCard.defaultProps = {
-  userObj: {},
+  }).isRequired,
 };
 
 export default ProfileCard;
