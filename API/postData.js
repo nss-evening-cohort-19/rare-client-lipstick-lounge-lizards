@@ -25,15 +25,14 @@ const getSinglePost = (postId) => fetch(`http://localhost:8088/posts/${postId}`)
 
 const createPost = (postObject) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}`, postObject)
-    .then((response) => {
-      const body = { pk: response.data.name };
-      axios.patch(`${dbUrl}/posts/${response.data.name}.json`, body).then(() => {
-        getAllPosts(postObject.uid).then(resolve);
-      });
-    })
+    .then((createObject) => resolve(createObject.data))
     .catch(reject);
 });
 
 export {
-  getAllPosts, getPostByUserId, getPostsByAuthorId, getSinglePost, createPost,
+  getAllPosts,
+  getPostByUserId,
+  getSinglePost,
+  getPostsByAuthorId,
+  createPost,
 };
