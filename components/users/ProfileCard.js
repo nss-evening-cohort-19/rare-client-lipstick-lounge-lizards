@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
+import Link from 'next/link';
 
 function ProfileCard({ userObj }) {
   return (
@@ -17,7 +18,7 @@ function ProfileCard({ userObj }) {
           <Card.Title>Email: {userObj.email}</Card.Title>
           <Card.Title>Account Created On: {userObj.created_on}</Card.Title>
           <Card.Title>{userObj.active === 'Yes' ? 'Active Account' : 'Deactive Account'}</Card.Title>
-          <Card.Link href="#">Number of posts:</Card.Link>
+          <Link href={`/posts/${userObj.id}`} passHref>Author of __ posts</Link>
         </Card.Body>
       </Card>
     </div>
