@@ -9,9 +9,9 @@ const getAllUsers = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getUserByUid = (uid) => new Promise((resolve, reject) => {
+const getUserByUid = (id) => new Promise((resolve, reject) => {
   axios
-    .get(`${dbUrl}/${uid}`)
+    .get(`${dbUrl}/${id}`)
     .then((userObj) => resolve(userObj.data))
     .catch(reject);
 });
