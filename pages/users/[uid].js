@@ -4,17 +4,17 @@ import { getUserByUid } from '../../API/userData';
 import ProfileCard from '../../components/users/ProfileCard';
 
 export default function UserProfilePage() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState([]);
   const router = useRouter();
-  const { id } = router.query;
+  const { uid } = router.query;
 
   const getTheProfileInfo = () => {
-    getUserByUid(id).then(setUser);
+    getUserByUid(uid).then(setUser);
   };
 
   useEffect(() => {
     getTheProfileInfo();
-  }, []);
+  }, [router]);
 
   return (
     <div>

@@ -8,14 +8,14 @@ function ProfileCard({ userObj }) {
       <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={userObj.profile_image_url} />
         <Card.Body>
-          <Card.Text>{userObj.first_name}{userObj.last_name}</Card.Text>
+          <Card.Text>{userObj.first_name} {userObj.last_name}</Card.Text>
         </Card.Body>
       </Card>
       <Card style={{ width: '18rem' }}>
         <Card.Body>
           <Card.Title>Username: {userObj.username}</Card.Title>
           <Card.Title>Email: {userObj.email}</Card.Title>
-          <Card.Title>Account Created On:{userObj.created_on}</Card.Title>
+          <Card.Title>Account Created On: {userObj.created_on}</Card.Title>
           <Card.Title>{userObj.active === 'Yes' ? 'Active Account' : 'Deactive Account'}</Card.Title>
           <Card.Link href="#">Number of posts:</Card.Link>
         </Card.Body>

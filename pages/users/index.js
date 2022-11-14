@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAllUsers } from '../../api/userData';
+import { getAllUsers } from '../../API/userData';
 import UserTable from '../../components/users/UserTable';
 
 export default function Users() {
